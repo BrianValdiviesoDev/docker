@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres:
+    restart: always
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_PASSWORD: tu_password
+      POSTGRES_USER: brian
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  postgres_data:
